@@ -6,7 +6,7 @@ public class MathFunctionsTests
 {
     
     [Fact]
-    public void MathFunctions_ReturnSquare_ReturnsDouble()
+    public void MathFunctions_ReturnSquare_ReturnDouble()
     {
         double number = 3;
 
@@ -16,7 +16,7 @@ public class MathFunctionsTests
     }
 
     [Fact]
-    public void MathFunctions_ConvertInchesToMM_ReturnsDouble()
+    public void MathFunctions_ConvertInchesToMM_ReturnDouble()
     {
         double number = 3;
 
@@ -26,7 +26,7 @@ public class MathFunctionsTests
     }
     
     [Fact]
-    public void MathFunctions_ReturnSquareRoot_ReturnsDouble()
+    public void MathFunctions_ReturnSquareRoot_ReturnDouble()
     {
         double number = 25;
 
@@ -36,7 +36,7 @@ public class MathFunctionsTests
     }
 
     [Fact]
-    public void MathFunctions_ReturnCube_ReturnsDouble()
+    public void MathFunctions_ReturnCube_ReturnDouble()
     {
         double number = 2;
 
@@ -46,7 +46,7 @@ public class MathFunctionsTests
     }
     
     [Fact]
-    public void MathFunctions_ReturnAreaOfCircle_ReturnsDouble()
+    public void MathFunctions_ReturnAreaOfCircle_ReturnDouble()
     {
         double number = 10;
 

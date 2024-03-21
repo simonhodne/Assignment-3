@@ -4,7 +4,8 @@ namespace Tests;
 
 public class GreetingFunctionTest
 {
-    public void GreetingFunction_GreetPerson_ReturnsString()
+    [Fact]
+    public void GreetingFunction_GreetPerson_ReturnString()
     {
         string name = "John Doe";
 
