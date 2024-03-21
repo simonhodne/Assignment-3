@@ -54,4 +54,14 @@ public class MathFunctionsTests
 
         Assert.Equal(314, result);
     }
+    [Fact]
+    public void MathFunctions_SplitByTens_ReturnIntArray()
+    {
+        string number = "12345";
+        int[] expected = new int[]{1,23,45};
+
+        int[] result = MathFunctions.SplitByTens(number);
+
+        Assert.Equal(expected,result);
+    }
 }
