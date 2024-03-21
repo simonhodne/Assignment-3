@@ -6,51 +6,51 @@ public class MathFunctionsTests
 {
     
     [Fact]
-    public void MathFunctions_ReturnSquare_ReturnDouble()
+    public void MathFunctions_ReturnSquare_ReturnFloat()
     {
-        double number = 3;
+        float number = 3;
 
-        double result = MathFunctions.ReturnSquare(number);
+        float result = MathFunctions.ReturnSquare(number);
 
         Assert.Equal(9, result);
     }
 
     [Fact]
-    public void MathFunctions_ConvertInchesToMM_ReturnDouble()
+    public void MathFunctions_ConvertInchesToMM_ReturnFloat()
     {
-        double number = 3;
+        float number = 3;
 
-        double result = MathFunctions.ConvertInchesToMM(number);
+        float result = MathFunctions.ConvertInchesToMM(number);
 
-        Assert.Equal(76.2, result);
+        Assert.Equal(76.2F, result);
     }
     
     [Fact]
-    public void MathFunctions_ReturnSquareRoot_ReturnDouble()
+    public void MathFunctions_ReturnSquareRoot_ReturnFloat()
     {
-        double number = 25;
+        float number = 25;
 
-        double result = MathFunctions.ReturnSquareRoot(number);
+        float result = MathFunctions.ReturnSquareRoot(number);
 
         Assert.Equal(5, result);
     }
 
     [Fact]
-    public void MathFunctions_ReturnCube_ReturnDouble()
+    public void MathFunctions_ReturnCube_ReturnFloat()
     {
-        double number = 2;
+        float number = 2;
 
-        double result = MathFunctions.ReturnCube(number);
+        float result = MathFunctions.ReturnCube(number);
 
         Assert.Equal(8, result);
     }
     
     [Fact]
-    public void MathFunctions_ReturnAreaOfCircle_ReturnDouble()
+    public void MathFunctions_ReturnAreaOfCircle_ReturnFloat()
     {
-        double number = 10;
+        float number = 10;
 
-        double result = MathFunctions.ReturnAreaOfCircle(number);
+        float result = MathFunctions.ReturnAreaOfCircle(number);
 
         Assert.Equal(314, result);
     }

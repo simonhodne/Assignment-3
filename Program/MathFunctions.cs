@@ -2,29 +2,28 @@
 
 public static class MathFunctions
 {
-    public static double ReturnSquare(double number)
+    const float ONE_INCH_IN_MM = 25.4F;
+    public static float ReturnSquare(float number)
     {
         return number * number;
     }
-
-    public static double ConvertInchesToMM(double number)
+    public static float ConvertInchesToMM(float number)
     {
-        double output = 0.0;
+        return number * ONE_INCH_IN_MM;
+    }
+    public static float ReturnSquareRoot(float number)
+    {
+        float output = 0.0F;
         return output;
     }
-    public static double ReturnSquareRoot(double number)
+    public static float ReturnCube(float number)
     {
-        double output = 0.0;
+        float output = 0.0F;
         return output;
     }
-    public static double ReturnCube(double number)
+    public static float ReturnAreaOfCircle(float radius)
     {
-        double output = 0.0;
-        return output;
-    }
-    public static double ReturnAreaOfCircle(double radius)
-    {
-        double output = 0.0;
+        float output = 0.0F;
         return output;
     }
     
