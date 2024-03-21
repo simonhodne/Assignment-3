@@ -26,5 +26,39 @@ public static class MathFunctions
         float output = 0.0F;
         return output;
     }
-    
+    public static int[] SplitByTens(string number)
+    {
+        int digitAmount = number.Length;
+        bool isOdd = false;
+        if(digitAmount % 2 != 0)
+        {
+            isOdd = true;
+            digitAmount++;
+        }
+        int[] output = new int[digitAmount/2];
+        if(isOdd)
+        {
+            digitAmount--;
+        }
+        while(digitAmount > 0)
+        {
+            if(digitAmount == 1)
+            {
+                output[0] = int.Parse(number.Substring(0,1));
+            }
+            else
+            {
+                if(isOdd)
+                {
+                    output[(digitAmount-1)/2] = int.Parse(number.Substring(digitAmount-2,2));
+                }
+                else
+                {
+                    output[(digitAmount/2)-1] = int.Parse(number.Substring(digitAmount-2,2));
+                }  
+            }
+            digitAmount += -2;
+        }
+        return output;
+    }
 }
