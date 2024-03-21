@@ -4,8 +4,7 @@ public static class MathFunctions
 {
     public static double ReturnSquare(double number)
     {
-        double output = 0.0;
-        return output;
+        return number * number;
     }
 
     public static double ConvertInchesToMM(double number)
