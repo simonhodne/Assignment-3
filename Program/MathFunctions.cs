@@ -29,12 +29,27 @@ public static class MathFunctions
             splitNumbers = numberAsString.Split('.');
             hasDecimals = true;
         }
-
+        
         if(hasDecimals)
         {
-            int[] nonDecimal = SplitByTens(splitNumbers[0], false);
-            int[] Decimal = SplitByTens(splitNumbers[1], true);
+            int[] nonDecimals = SplitByTens(splitNumbers[0], false);
+            int[] decimals = SplitByTens(splitNumbers[1], true);
+            int[][] decimalSplitNumbers = new int[2][];
+            decimalSplitNumbers[0] = nonDecimals;
+            decimalSplitNumbers[1] = decimals;
+            output = CalculateRoot(decimalSplitNumbers, hasDecimals);
+        }
+        else
+        {
+            int[] numberSplitByTens = SplitByTens(numberAsString, false);
+            int[][] reformattedNumbers = new int[2][];
+            reformattedNumbers[0] = numberSplitByTens;
+            output = CalculateRoot(reformattedNumbers, false);
+        }
 
+        if(!isReal)
+        {
+            output += "i";
         }
 
         return output;
@@ -132,7 +147,7 @@ public static class MathFunctions
                 }
             }
 
-            remainder = dividend-divisor;
+            remainder = dividend-(divisor*divisor);
             output+= divisor.ToString();
             quotient+= divisor;
 
@@ -156,7 +171,7 @@ public static class MathFunctions
                     divisor--;
                 }
 
-                remainder = dividend-divisor;
+                remainder = dividend-(divisor*divisor);
                 output+= divisor.ToString();
                 quotient+= divisor;
             }
@@ -172,8 +187,11 @@ public static class MathFunctions
                 {
                     divisor--;
                 }
-
-                remainder = dividend-divisor;
+                if(divisor < 1)
+                {
+                    break;
+                }
+                remainder = dividend-(divisor*divisor);
                 output+= divisor.ToString();
                 quotient+= divisor;
                 additionalCalcs++;

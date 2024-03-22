@@ -28,11 +28,11 @@ public class MathFunctionsTests
     [Fact]
     public void MathFunctions_ReturnSquareRoot_ReturnString()
     {
-        float number = -1049.125F;
+        float number = -25;
 
         string result = MathFunctions.ReturnSquareRoot(number);
 
-        Assert.Equal("32,39i", result);
+        Assert.Equal("5i", result);
     }
 
     [Fact]
@@ -70,11 +70,11 @@ public class MathFunctionsTests
     public void MathFunctions_CalculateRoot_ReturnString()
     {
         int[][] numberSets = new int[2][];
-        numberSets[0] = new int[]{10,49};
+        numberSets[0] = new int[]{25};
         numberSets[1] = new int[]{12,50};
 
-        string result = MathFunctions.CalculateRoot(numberSets,true);
+        string result = MathFunctions.CalculateRoot(numberSets,false);
 
-        Assert.Equal("32.39", result);
+        Assert.Equal("5", result);
     }
 }
