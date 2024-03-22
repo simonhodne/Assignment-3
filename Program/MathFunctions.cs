@@ -51,6 +51,10 @@ public static class MathFunctions
         {
             output += "i";
         }
+        else
+        {
+            output = "+/-" + output;
+        }
 
         return output;
     }
