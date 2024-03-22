@@ -11,22 +11,44 @@ public static class MathFunctions
     {
         return number * ONE_INCH_IN_MM;
     }
-    public static float ReturnSquareRoot(float number)
+    public static string ReturnSquareRoot(float number)
     {
-        float output = 0.0F;
+        string output = "";
+        bool isReal = true;
+        if(number < 0)
+        {
+            isReal = false;
+            number *= -1;
+        }
+
+        string numberAsString = number.ToString();
+        string[] splitNumbers = new string[2];
+        bool hasDecimals = false;
+        if(numberAsString.Contains('.'))
+        {
+            splitNumbers = numberAsString.Split('.');
+            hasDecimals = true;
+        }
+
+        if(hasDecimals)
+        {
+            int[] nonDecimal = SplitByTens(splitNumbers[0], false);
+            int[] Decimal = SplitByTens(splitNumbers[1], true);
+
+        }
+
         return output;
     }
     public static float ReturnCube(float number)
     {
-        float output = 0.0F;
-        return output;
+        return number*number*number;
     }
     public static float ReturnAreaOfCircle(float radius)
     {
-        float output = 0.0F;
-        return output;
+        
+        return 3.14F*radius*radius;
     }
-    public static int[] SplitByTens(string number)
+    public static int[] SplitByTens(string number, bool isDecimal)
     {
         int digitAmount = number.Length;
         bool isOdd = false;
@@ -40,24 +62,121 @@ public static class MathFunctions
         {
             digitAmount--;
         }
-        while(digitAmount > 0)
+
+        if(isDecimal)
         {
-            if(digitAmount == 1)
+            digitAmount = 0;
+            while(digitAmount < number.Length)
             {
-                output[0] = int.Parse(number.Substring(0,1));
-            }
-            else
-            {
-                if(isOdd)
+                if(digitAmount == number.Length-1)
                 {
-                    output[(digitAmount-1)/2] = int.Parse(number.Substring(digitAmount-2,2));
+                    output[output.Length-1] = int.Parse(number.Substring(number.Length-1,1)+"0");
                 }
                 else
                 {
-                    output[(digitAmount/2)-1] = int.Parse(number.Substring(digitAmount-2,2));
-                }  
+                    output[digitAmount/2] = int.Parse(number.Substring(digitAmount,2));
+                }
+                digitAmount += 2;
             }
-            digitAmount += -2;
+        }
+        else
+        {
+            while(digitAmount > 0)
+            {
+                if(digitAmount == 1)
+                {
+                    output[0] = int.Parse(number.Substring(0,1));
+                }
+                else
+                {
+                    if(isOdd)
+                    {
+                        output[(digitAmount-1)/2] = int.Parse(number.Substring(digitAmount-2,2));
+                    }
+                    else
+                    {
+                        output[(digitAmount/2)-1] = int.Parse(number.Substring(digitAmount-2,2));
+                    }
+                }
+                digitAmount += -2;
+            }
+        }
+        return output;
+    }
+    public static string CalculateRoot(int[][] numberSets, bool hasDecimals)
+    {
+        string output = "";
+        int remainder = 0;
+        int dividend;
+        int quotient = 0;
+
+        foreach(int number in numberSets[0])
+        {
+            int divisor = 9;
+            quotient *= 10;
+            dividend = number + remainder*100;
+            if(remainder == 0)
+            {
+                while(divisor*divisor > dividend)
+                {
+                    divisor--;
+                }
+                quotient = divisor;
+
+            }
+            else
+            {
+                while(divisor*(quotient+divisor) > dividend)
+                {
+                    divisor--;
+                }
+            }
+
+            remainder = dividend-divisor;
+            output+= divisor.ToString();
+            quotient+= divisor;
+
+        }
+
+        if(remainder != 0 || hasDecimals)
+        {
+            output+= ".";
+        }
+
+        if(hasDecimals)
+        {
+            foreach(int number in numberSets[1])
+            {
+                int divisor = 9;
+                quotient *= 10;
+                dividend = number + remainder*100;
+
+                while(divisor*(quotient+divisor) > dividend)
+                {
+                    divisor--;
+                }
+
+                remainder = dividend-divisor;
+                output+= divisor.ToString();
+                quotient+= divisor;
+            }
+        }
+        int additionalCalcs = 0;
+        while(remainder != 0 && additionalCalcs < 3)
+        {
+                int divisor = 9;
+                quotient *= 10;
+                dividend = remainder*100;
+
+                while(divisor*(quotient+divisor) > dividend)
+                {
+                    divisor--;
+                }
+
+                remainder = dividend-divisor;
+                output+= divisor.ToString();
+                quotient+= divisor;
+                additionalCalcs++;
         }
         return output;
     }
