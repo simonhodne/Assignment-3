@@ -2,9 +2,9 @@
 
 public static class GreetingFunction
 {
+    const string DEFAULT_GREETING = "Greetings, ";
     public static string GreetPerson(string name)
     {
-        string output = "";
-        return output;
+        return DEFAULT_GREETING+name+".";
     }
 }
